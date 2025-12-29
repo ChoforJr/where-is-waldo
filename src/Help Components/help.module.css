@@ -1,0 +1,22 @@
+.signIn {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5rem;
+  gap: 1rem;
+  font-size: 1.5rem;
+}
+label {
+  color: #e6e6fa;
+}
+button {
+  width: 8rem;
+  font-size: 1.5rem;
+  align-self: center;
+  color: #e6e6fa;
+  background-color: #238b00;
+  border-color: #8fbc8b;
+  border-radius: 1rem;
+}
+button:hover {
+  background-color: yellow;
+}

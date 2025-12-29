@@ -1,0 +1,29 @@
+.posts {
+  color: #e6e6fa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.postArticle {
+  color: #e6e6fa;
+  text-align: left;
+  border: 0.1rem #556b2f solid;
+  background-color: #556b2f;
+  width: 50rem;
+  padding-left: 2rem;
+  border-radius: 2rem;
+  padding-right: 1rem;
+}
+
+.postArticle h2 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.content {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

@@ -1,0 +1,57 @@
+.post {
+  color: #e6e6fa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.postArticle {
+  text-align: left;
+  width: 50rem;
+  padding-left: 2rem;
+  padding-right: 1rem;
+}
+.postArticle div {
+  font-size: 1.5rem;
+}
+hr {
+  width: 50rem;
+}
+.content {
+  text-wrap: wrap;
+}
+.comments {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.comment {
+  text-align: left;
+  width: 50rem;
+  padding-left: 2rem;
+  padding-right: 1rem;
+  border: 0.1rem #556b2f solid;
+  background-color: #556b2f;
+  border-radius: 2rem;
+}
+
+.commentDelBtn {
+  background-color: #dc143c;
+  color: #317873;
+}
+.commentDelBtn:hover {
+  background-color: #ff0000;
+}
+
+.commentEdtBtn {
+  background-color: #febe10;
+  color: #317873;
+}
+.commentEdtBtn:hover {
+  background-color: #ffff00;
+}
+
+.commenting input {
+  font-size: 1.5rem;
+}

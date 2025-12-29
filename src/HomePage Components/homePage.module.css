@@ -1,0 +1,18 @@
+.homePage {
+  background-color: #20b2aa;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  width: 25rem;
+  justify-self: center;
+  text-align: center;
+  margin-top: 5rem;
+}
+.homePage h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #e6e6fa;
+}
+.homePage:hover {
+  cursor: pointer;
+  transform: scale(1.075);
+}
