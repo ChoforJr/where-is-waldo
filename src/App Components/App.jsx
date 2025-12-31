@@ -7,34 +7,10 @@ import { useAppLogic } from "./UseAppLogic";
 import { AlignEndHorizontal, Info } from "lucide-react";
 
 const App = () => {
-  const {
-    id,
-    auth,
-    setAuth,
-    posts,
-    comments,
-    addComment,
-    changeComment,
-    deleteComment,
-    account,
-    changeAccountInfo,
-    deleteAccount,
-    profiles,
-  } = useAppLogic();
+  const { id } = useAppLogic();
 
   const value = {
     id,
-    auth,
-    setAuth,
-    posts,
-    comments,
-    addComment,
-    changeComment,
-    deleteComment,
-    account,
-    changeAccountInfo,
-    deleteAccount,
-    profiles,
   };
   return (
     <div className="container">

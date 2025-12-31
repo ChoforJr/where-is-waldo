@@ -1,22 +1,26 @@
-.signIn {
+.help {
   display: flex;
   flex-direction: column;
-  margin-top: 5rem;
   gap: 1rem;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  text-align: left;
+  padding-left: 20rem;
+  color: #fffdd0;
 }
-label {
-  color: #e6e6fa;
+.help p {
+  font-size: 1rem;
 }
-button {
-  width: 8rem;
-  font-size: 1.5rem;
-  align-self: center;
-  color: #e6e6fa;
-  background-color: #238b00;
-  border-color: #8fbc8b;
-  border-radius: 1rem;
+.help ul {
+  font-size: 1rem;
 }
-button:hover {
-  background-color: yellow;
+.help ol > li {
+  font-weight: bold;
+}
+
+.gameCharacters {
+  display: flex;
+  flex-wrap: wrap;
+}
+.gameCharacters img {
+  width: 15rem;
 }
