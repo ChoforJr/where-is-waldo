@@ -1,29 +1,28 @@
-.posts {
+.rankings {
   color: #e6e6fa;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 5fr;
 }
 
-.postArticle {
-  color: #e6e6fa;
-  text-align: left;
-  border: 0.1rem #556b2f solid;
-  background-color: #556b2f;
-  width: 50rem;
-  padding-left: 2rem;
-  border-radius: 2rem;
-  padding-right: 1rem;
+.rankings aside a {
+  color: #f5f5dc;
+}
+.rankings aside h1:hover {
+  background-color: #1e90ff;
 }
 
-.postArticle h2 {
-  display: flex;
-  justify-content: space-between;
+.rankings section {
+  background-color: #1e90ff;
+  height: 89vh;
 }
 
-.content {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+.rankings section table {
+  border-collapse: collapse;
+}
+
+.rankings section td,
+th {
+  font-size: 1.6rem;
+  padding: 1rem 5rem;
+  border: black 0.2rem solid;
 }
