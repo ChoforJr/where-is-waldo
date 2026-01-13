@@ -7,12 +7,13 @@ import { useAppLogic } from "./UseAppLogic";
 import { AlignEndHorizontal, Info } from "lucide-react";
 
 const App = () => {
-  const { id, level, rankings } = useAppLogic();
+  const { id, level, rankings, levelsInfo } = useAppLogic();
 
   const value = {
     id,
     level,
     rankings,
+    levelsInfo,
   };
   return (
     <div className="container">

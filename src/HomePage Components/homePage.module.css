@@ -16,3 +16,36 @@
   cursor: pointer;
   transform: scale(1.075);
 }
+
+.levels {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.levelArticle {
+  display: flex;
+  color: #343434;
+  text-align: left;
+  border: 0.2rem #cd5700 solid;
+  background-color: #e6e6fa;
+  width: 50rem;
+  height: 10rem;
+  padding: 1rem;
+  border-radius: 2rem;
+  justify-content: space-between;
+  transition: transform 0.3s ease-in-out;
+}
+.levelArticle img {
+  width: 20rem;
+  height: 10rem;
+}
+.levelArticle div {
+  text-align: center;
+}
+.levelArticle:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
