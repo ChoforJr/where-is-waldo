@@ -17,7 +17,7 @@ const routes = [
         element: <HomePage />,
       },
       { path: "ranking/:level?", element: <Rankings /> },
-      { path: "gameplay/:id", element: <Post /> },
+      { path: "gameplay/:boardID", element: <Post /> },
       { path: "help", element: <Help /> },
     ],
   },

@@ -7,20 +7,21 @@ import { useAppLogic } from "./UseAppLogic";
 import { AlignEndHorizontal, Info } from "lucide-react";
 
 const App = () => {
-  const { id, level, rankings, levelsInfo } = useAppLogic();
+  const { boardID, level, rankings, levelsInfo, characterIcon } = useAppLogic();
 
   const value = {
-    id,
+    boardID,
     level,
     rankings,
     levelsInfo,
+    characterIcon,
   };
   return (
     <div className="container">
       <nav>
         <h1>
           <Link to="/">
-            <img src="src/assets/logo.webp" alt="logo" width={25} />
+            <img src="/logo.webp" alt="logo" width={25} />
             Where's <span style={{ color: "#EE204D" }}>Waldo?</span>{" "}
           </Link>
         </h1>

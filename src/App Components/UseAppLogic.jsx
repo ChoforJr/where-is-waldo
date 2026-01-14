@@ -42,7 +42,7 @@ export function useAppLogic() {
     },
   ]);
 
-  const { id, level } = useParams();
+  const { boardID, level } = useParams();
   // const navigate = useNavigate();
   const levelsInfo = [
     {
@@ -50,7 +50,7 @@ export function useAppLogic() {
       keyID: crypto.randomUUID(),
       level: 1,
       difficulty: "easy",
-      image: "src/assets/board_1.jpg",
+      image: "/boards/board_1.jpg",
       name: "level 1 board",
     },
     {
@@ -58,7 +58,7 @@ export function useAppLogic() {
       keyID: crypto.randomUUID(),
       level: 2,
       difficulty: "easy",
-      image: "src/assets/board_2.jpg",
+      image: "/boards/board_2.jpg",
       name: "level 2 board",
     },
     {
@@ -66,7 +66,7 @@ export function useAppLogic() {
       keyID: crypto.randomUUID(),
       level: 3,
       difficulty: "normal",
-      image: "src/assets/board_3.jpg",
+      image: "/boards/board_3.jpg",
       name: "level 3 board",
     },
     {
@@ -74,14 +74,41 @@ export function useAppLogic() {
       keyID: crypto.randomUUID(),
       level: 4,
       difficulty: "normal",
-      image: "src/assets/board_4.jpg",
+      image: "/boards/board_4.jpg",
       name: "level 4 board",
     },
   ];
+  const characterIcon = [
+    {
+      id: 1,
+      keyID: crypto.randomUUID(),
+      image: "/icons/waldo_icon.png",
+      name: "waldo icon",
+    },
+    {
+      id: 1,
+      keyID: crypto.randomUUID(),
+      image: "/icons/wenda_icon.png",
+      name: "wenda icon",
+    },
+    {
+      id: 1,
+      keyID: crypto.randomUUID(),
+      image: "/icons/odlaw_icon.png",
+      name: "odlaw icon",
+    },
+    {
+      id: 1,
+      keyID: crypto.randomUUID(),
+      image: "/icons/wizard_icon.png",
+      name: "wizard icon",
+    },
+  ];
   return {
-    id,
+    boardID,
     level,
     rankings,
     levelsInfo,
+    characterIcon,
   };
 }
