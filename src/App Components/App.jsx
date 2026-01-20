@@ -7,7 +7,14 @@ import { useAppLogic } from "./UseAppLogic";
 import { AlignEndHorizontal, Info } from "lucide-react";
 
 const App = () => {
-  const { boardID, level, rankings, levelsInfo, characterIcon } = useAppLogic();
+  const {
+    boardID,
+    level,
+    rankings,
+    levelsInfo,
+    characterIcon,
+    confirmLocation,
+  } = useAppLogic();
 
   const value = {
     boardID,
@@ -15,6 +22,7 @@ const App = () => {
     rankings,
     levelsInfo,
     characterIcon,
+    confirmLocation,
   };
   return (
     <div className="container">

@@ -83,32 +83,90 @@ export function useAppLogic() {
       id: 1,
       keyID: crypto.randomUUID(),
       image: "/icons/waldo_icon.png",
-      name: "waldo icon",
+      name: "Waldo",
     },
     {
       id: 1,
       keyID: crypto.randomUUID(),
       image: "/icons/wenda_icon.png",
-      name: "wenda icon",
+      name: "Wenda",
     },
     {
       id: 1,
       keyID: crypto.randomUUID(),
       image: "/icons/odlaw_icon.png",
-      name: "odlaw icon",
+      name: "Odlaw",
     },
     {
       id: 1,
       keyID: crypto.randomUUID(),
       image: "/icons/wizard_icon.png",
-      name: "wizard icon",
+      name: "Wizard",
     },
   ];
+  const correctLocation = {
+    board1: {
+      waldo: {
+        min: {
+          x: 337,
+          y: 368,
+        },
+        max: {
+          x: 359,
+          y: 396,
+        },
+      },
+      wenda: {
+        min: {
+          x: 347,
+          y: 296,
+        },
+        max: {
+          x: 352,
+          y: 303,
+        },
+      },
+      wizard: {
+        min: {
+          x: 521,
+          y: 382,
+        },
+        max: {
+          x: 532,
+          y: 394,
+        },
+      },
+      odlaw: {
+        min: {
+          x: 461,
+          y: 475,
+        },
+        max: {
+          x: 477,
+          y: 488,
+        },
+      },
+    },
+  };
+
+  function confirmLocation(board, character, currentPos) {
+    if (
+      correctLocation[board][character].min.x <= currentPos.x &&
+      correctLocation[board][character].max.x >= currentPos.x &&
+      correctLocation[board][character].min.y <= currentPos.y &&
+      correctLocation[board][character].max.y >= currentPos.y
+    ) {
+      console.log(character, " found");
+    } else {
+      console.log("Not Found");
+    }
+  }
   return {
     boardID,
     level,
     rankings,
     levelsInfo,
     characterIcon,
+    confirmLocation,
   };
 }
