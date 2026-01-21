@@ -1,16 +1,9 @@
 import styles from "./homePage.module.css";
-import { useNavigate } from "react-router-dom";
 import { ItemContext } from "../ItemContext";
 import { useContext } from "react";
 
 const HomePage = () => {
-  const { levelsInfo } = useContext(ItemContext);
-
-  const navigate = useNavigate();
-  function startGame(event) {
-    const { id } = event.currentTarget;
-    navigate(`/gameplay/${id}`, { replace: false });
-  }
+  const { levelsInfo, startGame } = useContext(ItemContext);
 
   return (
     <div className={styles.levels}>

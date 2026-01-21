@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useState } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 // const apiUrl = import.meta.env.VITE_BLOG_API_URL;
 
 export function useAppLogic() {
@@ -41,9 +41,10 @@ export function useAppLogic() {
       player: "Natsu",
     },
   ]);
+  const [gameplay, setGameplay] = useState([]);
 
-  const { boardID, level } = useParams();
-  // const navigate = useNavigate();
+  const { boardID, level, gameID } = useParams();
+  const navigate = useNavigate();
   const levelsInfo = [
     {
       id: 1,
@@ -149,18 +150,78 @@ export function useAppLogic() {
     },
   };
 
-  function confirmLocation(board, character, currentPos) {
+  function startGame(event) {
+    const { id } = event.currentTarget;
+    const newGame = {
+      level: id,
+      gameID: gameplay.length,
+      startAt: Date.now(),
+      endAt: null,
+      waldo: false,
+      wenda: false,
+      wizard: false,
+      odlaw: false,
+      player: null,
+    };
+    setGameplay((prevGames) => {
+      return [...prevGames, newGame];
+    });
+    navigate(`/gameplay/${id}/${newGame.gameID}`, { replace: false });
+  }
+
+  function confirmLocation(board, character, currentPos, gameID) {
+    let currentGame = gameplay.find((game) => game.gameID == gameID);
+    if (currentGame == undefined) {
+      return alert(
+        "Gameplay not found, go back to homepage and start a new game"
+      );
+    }
     if (
       correctLocation[board][character].min.x <= currentPos.x &&
       correctLocation[board][character].max.x >= currentPos.x &&
       correctLocation[board][character].min.y <= currentPos.y &&
       correctLocation[board][character].max.y >= currentPos.y
     ) {
-      console.log(character, " found");
+      currentGame[character] = true;
+      if (
+        currentGame.waldo == true &&
+        currentGame.wenda == true &&
+        currentGame.wizard == true &&
+        currentGame.odlaw == true
+      ) {
+        currentGame.endAt = Date.now();
+      }
+      updateGameplay(currentGame);
     } else {
-      console.log("Not Found");
+      return alert("Wrong, Try again!");
     }
   }
+
+  function updateGameplay(updatedGame) {
+    setGameplay((prevGames) => {
+      const updateGames = prevGames.map((game) => {
+        if (game.gameID == updatedGame.gameID) {
+          return updatedGame;
+        }
+        return game;
+      });
+      return updateGames;
+    });
+  }
+
+  function addRanking(game) {
+    const modGame = {
+      id: rankings.length + 1,
+      keyID: crypto.randomUUID(),
+      level: game.level,
+      time: Math.floor((game.endAt - game.startAt) / 1000),
+      player: game.player,
+    };
+    setRankings((prevRanks) => {
+      return [...prevRanks, modGame];
+    });
+  }
+
   return {
     boardID,
     level,
@@ -168,5 +229,10 @@ export function useAppLogic() {
     levelsInfo,
     characterIcon,
     confirmLocation,
+    startGame,
+    gameID,
+    gameplay,
+    updateGameplay,
+    addRanking,
   };
 }

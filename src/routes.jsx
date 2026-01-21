@@ -1,7 +1,7 @@
 import App from "./App Components/App";
 import HomePage from "./HomePage Components/HomePage";
 import Rankings from "./Rankings Components/Rankings";
-import Post from "./Gameplay Components/Gameplay";
+import Gameplay from "./Gameplay Components/Gameplay";
 import Help from "./Help Components/Help";
 import ErrorPage from "./ErrorPage";
 
@@ -17,7 +17,7 @@ const routes = [
         element: <HomePage />,
       },
       { path: "ranking/:level?", element: <Rankings /> },
-      { path: "gameplay/:boardID", element: <Post /> },
+      { path: "gameplay/:boardID/:gameID", element: <Gameplay /> },
       { path: "help", element: <Help /> },
     ],
   },
