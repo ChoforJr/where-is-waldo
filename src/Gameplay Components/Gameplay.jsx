@@ -1,7 +1,7 @@
 import styles from "./gameplay.module.css";
 import { useNavigate } from "react-router-dom";
 import { CircleCheck } from "lucide-react";
-import { useRef, useState, useEffect, useMemo } from "react";
+import { useRef, useState, useMemo } from "react";
 import { ItemContext } from "../ItemContext";
 import { useContext } from "react";
 // const apiUrl = import.meta.env.VITE_BLOG_API_URL;
@@ -35,18 +35,6 @@ const Gameplay = () => {
   const dialogRef = useRef();
 
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (!currentGame) return;
-
-    setIconColor((prev) => {
-      const nextState = {};
-      Object.keys(prev).forEach((char) => {
-        nextState[char] = currentGame[char] === true ? "#1e90ff" : "#808080";
-      });
-      return nextState;
-    });
-  }, [currentGame, gameID]);
 
   function onChangePlayer(event) {
     const { value } = event.target;
@@ -98,6 +86,13 @@ const Gameplay = () => {
       gameID
     );
     closeDialog(event);
+    setIconColor((prev) => {
+      const nextState = {};
+      Object.keys(prev).forEach((char) => {
+        nextState[char] = currentGame[char] === true ? "#1e90ff" : "#808080";
+      });
+      return nextState;
+    });
     if (currentGame.endAt !== null) {
       dialogRef.current.showModal();
     }
