@@ -148,6 +148,132 @@ export function useAppLogic() {
         },
       },
     },
+    board2: {
+      waldo: {
+        min: {
+          x: 748,
+          y: 23,
+        },
+        max: {
+          x: 756,
+          y: 35,
+        },
+      },
+      wenda: {
+        min: {
+          x: 217,
+          y: 317,
+        },
+        max: {
+          x: 224,
+          y: 325,
+        },
+      },
+      wizard: {
+        min: {
+          x: 223,
+          y: 186,
+        },
+        max: {
+          x: 249,
+          y: 229,
+        },
+      },
+      odlaw: {
+        min: {
+          x: 715,
+          y: 272,
+        },
+        max: {
+          x: 724,
+          y: 296,
+        },
+      },
+    },
+    board3: {
+      waldo: {
+        min: {
+          x: 444,
+          y: 217,
+        },
+        max: {
+          x: 449,
+          y: 223,
+        },
+      },
+      wenda: {
+        min: {
+          x: 246,
+          y: 304,
+        },
+        max: {
+          x: 253,
+          y: 309,
+        },
+      },
+      wizard: {
+        min: {
+          x: 528,
+          y: 153,
+        },
+        max: {
+          x: 539,
+          y: 161,
+        },
+      },
+      odlaw: {
+        min: {
+          x: 346,
+          y: 160,
+        },
+        max: {
+          x: 353,
+          y: 170,
+        },
+      },
+    },
+    board4: {
+      waldo: {
+        min: {
+          x: 329,
+          y: 83,
+        },
+        max: {
+          x: 346,
+          y: 107,
+        },
+      },
+      wenda: {
+        min: {
+          x: 234,
+          y: 361,
+        },
+        max: {
+          x: 242,
+          y: 385,
+        },
+      },
+      wizard: {
+        min: {
+          x: 545,
+          y: 15,
+        },
+        max: {
+          x: 559,
+          y: 29,
+        },
+      },
+      odlaw: {
+        min: {
+          x: 151,
+          y: 355,
+        },
+        max: {
+          x: 162,
+          y: 377,
+        },
+      },
+    },
   };
 
   function startGame(event) {
