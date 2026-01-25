@@ -55,8 +55,8 @@ const Help = () => {
             <img src="/characters/Odlaw_f8nu7f.webp" alt="Odlaw" />
           </div>
           <div>
-            <h2>Wenda</h2>
-            <img src="/characters/Wenda_ob7q1b.webp" alt="Wenda" />
+            <h2>Wilma</h2>
+            <img src="/characters/Wilma_ob7q1b.webp" alt="Wilma" />
           </div>
           <div>
             <h2>Wizard</h2>

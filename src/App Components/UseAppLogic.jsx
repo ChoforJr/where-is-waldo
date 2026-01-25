@@ -57,8 +57,8 @@ export function useAppLogic() {
     {
       id: 1,
       keyID: crypto.randomUUID(),
-      image: "/icons/wenda_icon.png",
-      name: "Wenda",
+      image: "/icons/wilma_icon.png",
+      name: "Wilma",
     },
     {
       id: 1,

@@ -18,7 +18,7 @@ const Gameplay = () => {
   const [menuPos, setMenuPos] = useState({ x: 0, y: 0, isOpen: false });
   const [iconColor, setIconColor] = useState({
     waldo: "#808080",
-    wenda: "#808080",
+    wilma: "#808080",
     wizard: "#808080",
     odlaw: "#808080",
   });
