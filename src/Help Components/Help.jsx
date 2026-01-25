@@ -48,19 +48,19 @@ const Help = () => {
         <div className={styles.gameCharacters}>
           <div>
             <h2>Waldo</h2>
-            <img src="src/assets/Waldo_n4wodu.webp" alt="Waldo" />
+            <img src="/characters/Waldo_n4wodu.webp" alt="Waldo" />
           </div>
           <div>
             <h2>Odlaw</h2>
-            <img src="src/assets/Odlaw_f8nu7f.webp" alt="Odlaw" />
+            <img src="/characters/Odlaw_f8nu7f.webp" alt="Odlaw" />
           </div>
           <div>
             <h2>Wenda</h2>
-            <img src="src/assets/Wenda_ob7q1b.webp" alt="Wenda" />
+            <img src="/characters/Wenda_ob7q1b.webp" alt="Wenda" />
           </div>
           <div>
             <h2>Wizard</h2>
-            <img src="src/assets/Wizard_jvxa8d.webp" alt="Wizard" />
+            <img src="/characters/Wizard_jvxa8d.webp" alt="Wizard" />
           </div>
         </div>
       </section>
