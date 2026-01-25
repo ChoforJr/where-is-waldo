@@ -1,14 +1,10 @@
 import styles from "./rankings.module.css";
 import { Link } from "react-router-dom";
-
-// import { useNavigate } from "react-router-dom";
 import { ItemContext } from "../ItemContext";
 import { useContext } from "react";
 
 const Rankings = () => {
   const { level, rankings } = useContext(ItemContext);
-  // const navigate = useNavigate();
-
   return (
     <div className={styles.rankings}>
       <aside>

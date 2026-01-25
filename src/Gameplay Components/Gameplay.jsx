@@ -1,10 +1,9 @@
 import styles from "./gameplay.module.css";
 import { useNavigate } from "react-router-dom";
 import { CircleCheck } from "lucide-react";
-import { useRef, useState, useMemo } from "react";
+import { useRef, useState, useEffect } from "react";
 import { ItemContext } from "../ItemContext";
 import { useContext } from "react";
-// const apiUrl = import.meta.env.VITE_BLOG_API_URL;
 
 const Gameplay = () => {
   const {
@@ -12,15 +11,9 @@ const Gameplay = () => {
     characterIcon,
     confirmLocation,
     gameID,
-    gameplay,
-    updateGameplay,
-    addRanking,
+    currentGame,
+    addPlayerName,
   } = useContext(ItemContext);
-
-  const currentGame = useMemo(
-    () => gameplay.find((game) => game.gameID == gameID),
-    [gameID, gameplay]
-  );
 
   const [menuPos, setMenuPos] = useState({ x: 0, y: 0, isOpen: false });
   const [iconColor, setIconColor] = useState({
@@ -35,6 +28,22 @@ const Gameplay = () => {
   const dialogRef = useRef();
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!currentGame) return;
+
+    setIconColor((prev) => {
+      const nextState = {};
+      Object.keys(prev).forEach((char) => {
+        nextState[char] = currentGame[char] === true ? "#1e90ff" : "#808080";
+      });
+      return nextState;
+    });
+
+    if (currentGame.endAt !== null) {
+      dialogRef.current.showModal();
+    }
+  }, [currentGame]);
 
   function onChangePlayer(event) {
     const { value } = event.target;
@@ -85,24 +94,17 @@ const Gameplay = () => {
       currentPos.current,
       gameID
     );
+
     closeDialog(event);
-    setIconColor((prev) => {
-      const nextState = {};
-      Object.keys(prev).forEach((char) => {
-        nextState[char] = currentGame[char] === true ? "#1e90ff" : "#808080";
-      });
-      return nextState;
-    });
-    if (currentGame.endAt !== null) {
-      dialogRef.current.showModal();
-    }
   }
 
   function submitPlayer() {
-    currentGame.player = player;
-    updateGameplay(currentGame);
-    addRanking(currentGame);
+    if (player == "") {
+      return alert("You must input a name");
+    }
+    addPlayerName(player);
     dialogRef.current.close();
+    setPlayer("");
     navigate(`/ranking/${currentGame.level}`, { replace: false });
   }
 
@@ -160,7 +162,7 @@ const Gameplay = () => {
           </div>
         )}
       </section>
-      <dialog ref={dialogRef}>
+      <dialog ref={dialogRef} className={styles.playerModal}>
         <label htmlFor="player">
           Player:{" "}
           <input

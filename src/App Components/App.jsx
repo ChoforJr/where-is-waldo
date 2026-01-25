@@ -16,9 +16,8 @@ const App = () => {
     confirmLocation,
     startGame,
     gameID,
-    gameplay,
-    updateGameplay,
-    addRanking,
+    currentGame,
+    addPlayerName,
   } = useAppLogic();
 
   const value = {
@@ -30,9 +29,8 @@ const App = () => {
     confirmLocation,
     startGame,
     gameID,
-    gameplay,
-    updateGameplay,
-    addRanking,
+    currentGame,
+    addPlayerName,
   };
   return (
     <div className="container">
