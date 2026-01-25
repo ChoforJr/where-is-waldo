@@ -92,3 +92,17 @@
   font-size: 1.4rem;
   border-radius: 0.5rem;
 }
+
+.spinIcon {
+  animation: spin 1s linear infinite;
+  color: #ffff00;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

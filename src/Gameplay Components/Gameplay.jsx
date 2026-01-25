@@ -1,6 +1,6 @@
 import styles from "./gameplay.module.css";
 import { useNavigate } from "react-router-dom";
-import { CircleCheck } from "lucide-react";
+import { CircleCheck, Loader } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
 import { ItemContext } from "../ItemContext";
 import { useContext } from "react";
@@ -23,6 +23,7 @@ const Gameplay = () => {
     odlaw: "#808080",
   });
   const [player, setPlayer] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const currentPos = useRef();
   const dialogRef = useRef();
@@ -88,13 +89,14 @@ const Gameplay = () => {
 
   function checkCharacter(event, characterName) {
     event.stopPropagation();
+    setIsLoading(true);
     confirmLocation(
       `board${boardID}`,
       characterName.toLowerCase(),
       currentPos.current,
       gameID
     );
-
+    setIsLoading(false);
     closeDialog(event);
   }
 
@@ -139,7 +141,10 @@ const Gameplay = () => {
             }}
             onClick={closeDialog}
           >
-            <p>Who is there?</p>
+            <p>
+              Who is there?{" "}
+              {isLoading && <Loader size={17} className={styles.spinIcon} />}
+            </p>
             <section>
               {characterIcon.map((item) => {
                 return (
