@@ -2,6 +2,12 @@
 
 A fun and interactive React-based photo tagging game where players locate and click on specific characters hidden within images. Test your observation skills and compete on the leaderboard!
 
+## Backend API
+
+This is the **frontend** of the Where's Waldo application. The backend API handles game logic, leaderboards, and data persistence.
+
+**Backend Repository:** [where-is-waldo-api](https://github.com/ChoforJr/where-is-waldo-api)
+
 ## Table of Contents
 
 - [Features](#features)
@@ -104,12 +110,6 @@ public/
 
 tests/                       # Unit and integration tests
 ```
-
-## Backend API
-
-This is the **frontend** of the Where's Waldo application. The backend API handles game logic, leaderboards, and data persistence.
-
-**Backend Repository:** [where-is-waldo-api](https://github.com/ChoforJr/where-is-waldo-api)
 
 ## Author
 
