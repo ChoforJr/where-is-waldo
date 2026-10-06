@@ -1,119 +1,89 @@
-# Where's Waldo - Photo Tagging Game
+# Where's Waldo?
 
-A fun and interactive React-based photo tagging game where players locate and click on specific characters hidden within images. Test your observation skills and compete on the leaderboard!
+A responsive hidden-object game with four boards, live game synchronization, a public leaderboard, and secure player accounts.
 
-## Backend API
+## Architecture
 
-This is the **frontend** of the Where's Waldo application. The backend API handles game logic, leaderboards, and data persistence.
+- **Web:** Next.js App Router, React, strict TypeScript, and Tailwind CSS.
+- **API:** Express 5 and TypeScript, backed by PostgreSQL and Prisma.
+- **Realtime:** Socket.IO shares live gameplay state and leaderboard updates.
+- **Authentication:** Passwords are hashed with bcryptjs. Users receive an opaque, random HttpOnly server-side session cookie, and only the SHA-256 hash of the session token is stored.
+- **Validation/security:** Zod request schemas, authentication rate limiting, Helmet security headers, explicit CORS origins, and protected account routes.
 
-**Backend Repository:** [where-is-waldo-api](https://github.com/ChoforJr/where-is-waldo-api)
+The frontend and API remain separate deployable applications.
 
-## Table of Contents
+## Local development
 
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Project Structure](#project-structure)
-- [Backend API](#backend-api)
-- [Author](#author)
+Use Node.js 20.19+ and PostgreSQL.
 
-## Features
+1. Install dependencies in both project directories:
 
-- 🎮 **Interactive Gameplay**: Click on images to find hidden characters
-- ⏱️ **Instant Feedback**: Get immediate confirmation when you locate characters correctly
-- 🏆 **Leaderboard**: View rankings and compare your times with other players
-- 📚 **Multiple Difficulty Levels**: Multiple boards to choose from and test your skills
-- 🎨 **Intuitive UI**: Clean and user-friendly interface with help section
-- ⚡ **Fast Performance**: Built with Vite for optimized loading and performance
-
-## Tech Stack
-
-**Frontend:**
-
-- React 19.1.1
-- React Router DOM 7.8.2 (for navigation and routing)
-- Vite 7.1.2 (build tool)
-- Lucide React (icon library)
-- CSS Modules (component-scoped styling)
-
-**Testing & Quality:**
-
-- Vitest (unit testing)
-- React Testing Library
-- ESLint (code quality)
-
-## Installation
-
-### Prerequisites
-
-- Node.js (v16 or higher)
-- npm
-
-### Setup
-
-1. **Clone the repository:**
-
-   ```bash
-   git clone https://github.com/ChoforJr/where-is-waldo.git
-   cd where-is-waldo
+   ```sh
+   cd where-is-waldo && npm install
+   cd ../where-is-waldo-api && npm install
    ```
 
-2. **Install dependencies:**
+2. Configure `where-is-waldo/.env.local`:
 
-   ```bash
-   npm install
+   ```env
+   NEXT_PUBLIC_API_URL=http://localhost:5000/api
    ```
 
-3. **Start the development server:**
-   ```bash
+3. Configure `where-is-waldo-api/.env`:
+
+   ```env
+   DATABASE_URL=postgresql://postgres:password@localhost:5432/where_is_waldo
+   ALLOWED_ORIGINS=http://localhost:3000
+   PORT=5000
+   ```
+
+4. Apply database migrations and generate Prisma Client:
+
+   ```sh
+   cd where-is-waldo-api
+   npx prisma migrate deploy
+   npx prisma generate
+   ```
+
+5. Run the API and web app in separate terminals:
+
+   ```sh
+   # where-is-waldo-api
+   npm run dev
+
+   # where-is-waldo
    npm run dev
    ```
-   The application will be available at `http://localhost:5173`
 
-## Usage
+The web app is served at `http://localhost:3000`; the API and Socket.IO server share `http://localhost:5000`.
 
-### Available Scripts
+## Commands
 
-- `npm run dev` - Start the development server
-- `npm run build` - Build the application for production
-- `npm run preview` - Preview the production build locally
-- `npm run test` - Run unit tests
-- `npm run lint` - Check code quality with ESLint
+| Project | Command | Purpose |
+| --- | --- | --- |
+| Web | `npm run dev` | Start Next.js development server |
+| Web | `npm run build` | Create production build |
+| Web | `npm run lint` | Run Next.js ESLint rules |
+| Web | `npm run typecheck` | Run strict TypeScript check |
+| API | `npm run dev` | Watch and restart typed API |
+| API | `npm run build` | Generate Prisma Client and compile |
+| API | `npm test` | Run API unit tests |
+| API | `npm run typecheck` | Run strict TypeScript check |
 
-### How to Play
+## Routes
 
-1. Navigate to a **board** from the home page
-2. An image will be displayed with hidden characters
-3. **Click** on the image where you think a character is located
-4. Receive instant feedback - green for correct, red for incorrect
-5. Find all characters to **win** and see your completion time on the leaderboard
-6. Visit the **Help** page for additional information
+- `/` — choose a board.
+- `/game/[boardId]/[gameId]` — play and submit a completed time.
+- `/rankings` and `/rankings/[level]` — public leaderboard.
+- `/help` — game instructions.
+- `/sign-in`, `/sign-up`, `/account` — account and protected profile.
 
-## Project Structure
+If you are signed in when you save a completed round, it is also linked to your account profile. Unsigned rounds still appear on the public leaderboard by player name.
 
-```
-src/
-├── App Components/          # Main app wrapper and routing logic
-├── HomePage Components/      # Home page and board selection
-├── Gameplay Components/      # Core game logic and UI
-├── Rankings Components/      # Leaderboard display
-├── Help Components/         # Help/instructions page
-├── ItemContext.jsx          # Global context for shared state
-├── ErrorPage.jsx            # Error boundary component
-├── routes.jsx               # Route definitions
-└── main.jsx                 # Application entry point
+## Deployment notes
 
-public/
-├── boards/                  # Game board images
-└── characters/              # Character reference images
-
-tests/                       # Unit and integration tests
-```
-
-## Author
-
-**FORSAKANG CHOFOR JUNIOR**
-
-- [GitHub](https://github.com/ChoforJr)
-- [LinkedIn](https://www.linkedin.com/in/choforforsakang/)
+- Set `NEXT_PUBLIC_API_URL` to the public API base URL ending in `/api`.
+- Set `DATABASE_URL`, `ALLOWED_ORIGINS` (comma-separated exact web origins), and `PORT` for the API.
+- Apply migrations using `prisma migrate deploy` before starting the API.
+- Serve the API and frontend over HTTPS in production; cross-origin production session cookies set `SameSite=None; Secure`, and state-changing auth requests validate the configured origin.
+- WebSocket transport uses the same allowed frontend origins and API host.
