@@ -82,6 +82,7 @@ If you are signed in when you save a completed round, it is also linked to your 
 
 ## Deployment notes
 
+- Deploy the web project with the **Next.js** framework preset. Leave Vercel's **Output Directory** unset so it uses Next.js build output; do not set it to `dist`.
 - Set `NEXT_PUBLIC_API_URL` to the public API base URL ending in `/api`.
 - Set `DATABASE_URL`, `ALLOWED_ORIGINS` (comma-separated exact web origins), and `PORT` for the API.
 - Apply migrations using `prisma migrate deploy` before starting the API.
